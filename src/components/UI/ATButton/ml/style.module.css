@@ -1,0 +1,9 @@
+.mailBtn {
+  background-color: #168de2;
+  color: white;
+  transition: 400ms;
+}
+  
+.mailBtn:hover {
+  background-color: #0e6bbd;
+}

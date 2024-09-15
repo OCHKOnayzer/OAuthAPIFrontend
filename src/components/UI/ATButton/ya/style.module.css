@@ -1,0 +1,10 @@
+.yandexBtn {
+    background-color: white;
+    border: 2px solid #ff0000;
+    color: #ff0000;
+    transition: 400ms;
+  }
+  
+.yandexBtn:hover {
+    background-color: #ffcccc;
+}

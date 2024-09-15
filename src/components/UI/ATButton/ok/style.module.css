@@ -1,0 +1,10 @@
+.okBtn {
+    background-color: #ee8208;
+    color: white;
+    transition: 300ms;
+}
+  
+.okBtn:hover {
+    background-color: #cc6906;
+}
+  
