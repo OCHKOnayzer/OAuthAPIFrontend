@@ -18,7 +18,7 @@ root.render(
     <Context.Provider value ={{ 
       store
      }}>
-      <BrowserRouter  basename={process.env.PUBLIC_URL}>
+      <BrowserRouter>
         <App/>
       </BrowserRouter>
     </Context.Provider>
