@@ -14,10 +14,10 @@ const Login = () => {
       <h1 className={classes.authTitle}>Войти через социальные сети</h1>
 
       <div className={classes.authButtons}>
-        <ATVKbtn/>  
-        <ATOKbtn/>
+        {/* <ATVKbtn/>  
+        <ATOKbtn/> */}
         <ATYAbtn/>
-        <ATMLbtn/>
+        {/* <ATMLbtn/> */}
       </div>
       <div className={classes.authFooter}>
         <a href="/privacy-policy">Политика конфиденциальности</a> |{' '}

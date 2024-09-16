@@ -1,9 +1,88 @@
-.profileConteiner{
+/* style.module.css */
+.profileContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    height: 100vh;
+    align-items: center;
+    min-height: 100vh;
     background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
+  }
+  
+  .profileCard {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .profileTitle {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .profileDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .profileDetails div {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .logoutButton {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff4d4d;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .logoutButton:hover {
+    background-color: #e60000;
+  }
+  
+  /* Адаптивная верстка */
+  @media (max-width: 768px) {
+    .profileCard {
+      padding: 15px;
+    }
+  
+    .profileTitle {
+      font-size: 20px;
+    }
+  
+    .profileDetails div {
+      font-size: 16px;
+    }
+  
+    .logoutButton {
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .profileTitle {
+      font-size: 18px;
+    }
+  
+    .profileDetails div {
+      font-size: 14px;
+    }
+  
+    .logoutButton {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+  }
+  

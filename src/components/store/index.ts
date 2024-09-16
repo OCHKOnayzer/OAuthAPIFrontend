@@ -4,10 +4,10 @@ import axios from "axios";
 import { AUTH_API_URL } from "../http";
 
 interface IUser {
-    id?: number;
-    username?: string;
+    user_id?: number;
+    first_name?: string;
+    last_name?:string;
     email?: string;
-    [key: string]: any;
 }
 
 export default class Store {
@@ -16,7 +16,7 @@ export default class Store {
 
     constructor() {
         makeAutoObservable(this);
-
+        this.checkAuth(); 
     }
 
     setAuth(bool: boolean): void {
@@ -54,7 +54,7 @@ export default class Store {
         try {
             const response = await AuthService.yandexLogin(code);
             console.log('Response from Yandex login:', response);  // Вывод ответа для отладки
-           
+            
         } catch (e) {
             console.log(e);
             handleError(e);
@@ -68,6 +68,22 @@ export default class Store {
         try {
             const response = await AuthService.vkLogin(code);
             console.log('Response from vk login:', response);
+           
+        } catch (e) {
+            console.log(e);
+            handleError(e);
+        }
+    }
+
+    static async loginWithOk( code: any, handleError: (error: any) => void): Promise<void> {
+        
+        console.log('code:',code)
+
+        console.log('hello world')
+
+        try {
+            const response = await AuthService.okLogin(code);
+            console.log('Response from OK login:', response);
            
         } catch (e) {
             console.log(e);
