@@ -5,11 +5,14 @@ import yaClasses from './style.module.css';
 import vk from '../../../image/vk.svg';
 import Store from '../../../store';  // Импортируем store
 
-const handleError = () =>{ 
 
-}
 
 const ATYAbtn = () => {
+
+  const handleError = () =>{ 
+
+  }
+
   const clientId = 'c6de9c3e0c1341048fb7c790261852bd';
   const redirectUri = 'http://localhost:3000';  // Указываем URL для редиректа
 
@@ -27,11 +30,9 @@ const ATYAbtn = () => {
 
     if (code) {
       // Передаем код в Store для авторизации
-      Store.loginWithYandex(code,handleError, (error: any) => {
-        console.error('Ошибка авторизации через Яндекс', error);
-      })
+      Store.loginWithYandex(code,handleError)
         .then(() => {
-         console.log()// После успешной авторизации можно перенаправить на главную страницу
+         console.log(code)// После успешной авторизации можно перенаправить на главную страницу
         })
         .catch((error: any) => {
           console.error('Ошибка обработки авторизации', error);
