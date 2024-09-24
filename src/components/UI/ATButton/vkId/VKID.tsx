@@ -30,7 +30,7 @@ const VKIDAuthComponent = () => {
 
     VKID.Config.init({
       app: '52336772',
-      redirectUrl: 'https://e35f-92-39-220-81.ngrok-free.app',
+      redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app/',
       scope: 'email phone',
     });
 
