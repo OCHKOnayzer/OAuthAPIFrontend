@@ -1,6 +1,4 @@
-import React from 'react';
 import classes from './style.module.css';
-import coin from '../../image/coin.png';
 import ATVKbtn from '../../UI/ATButton/vk/ATVKbtn';
 import ATOKbtn from '../../UI/ATButton/ok/ATOKbtn';
 import ATYAbtn from '../../UI/ATButton/ya/ATYAbtn';

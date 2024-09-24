@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import classes from '../style.module.css';
 import okClasses from './style.module.css';
 import ok from '../../../image/ok.svg';

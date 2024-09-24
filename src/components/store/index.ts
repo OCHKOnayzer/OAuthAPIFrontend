@@ -1,4 +1,4 @@
-import { makeAutoObservable, set } from "mobx";
+import { makeAutoObservable } from "mobx";
 import AuthService from "../service/AuthService";
 import axios from "axios";
 import { AUTH_API_URL } from "../http";
@@ -112,10 +112,10 @@ export default class Store {
         }
     }
 
-    async loginWithVkId(token: string, handleError: (error: any) => void): Promise<void> {
+    async loginWithVkId(token: string,deviceId:string, handleError: (error: any) => void): Promise<void> {
         try {
-            
-            const response = await AuthService.vkIdLogin(token);
+
+            const response = await AuthService.vkIdLogin(token,deviceId);
     
             const { user, accessToken, provider } = response.data;
 

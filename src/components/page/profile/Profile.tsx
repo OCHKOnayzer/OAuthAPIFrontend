@@ -1,5 +1,4 @@
-// Profile.jsx
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import classes from './style.module.css';
 import { StoreContext } from '../../..';
 import { IUser } from '../../../types/IUser';

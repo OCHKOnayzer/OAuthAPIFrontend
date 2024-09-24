@@ -1,4 +1,4 @@
-import React,{FC, useEffect,useState} from 'react';
+import { useEffect } from 'react';
 import classes from '../style.module.css';
 import vkClasses from './style.module.css'
 import vk from '../../../image/vk.svg';
@@ -8,8 +8,6 @@ import * as VKID from '@vkid/sdk';
 console.log(VKID); 
 
 const ATVKbtn = () => {
-
-  const [goDataVk,setGoDataVk] = useState<boolean>(false)
 
   const store = new Store()
 
@@ -41,7 +39,7 @@ const ATVKbtn = () => {
     const code: string | null = urlParams.get('code');
   
     
-    const parametr = localStorage.getItem('provider')
+    // const parametr = localStorage.getItem('provider')
     if (code) {
       
       window.localStorage.setItem('auth_code', code);

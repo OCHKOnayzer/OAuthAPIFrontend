@@ -1,4 +1,4 @@
-import React,{useContext, useEffect, useState} from 'react';
+import {useContext} from 'react';
 import { Route, Routes } from "react-router-dom";
 import Login from './components/page/login/Login';
 import Profile from './components/page/profile/Profile';

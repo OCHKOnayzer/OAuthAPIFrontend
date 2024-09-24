@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import classes from '../style.module.css';
 import yaClasses from './style.module.css';
-import vk from '../../../image/vk.svg';
 import Store from '../../../store';
 
 const ATYAbtn = () => {
