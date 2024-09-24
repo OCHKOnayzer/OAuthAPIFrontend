@@ -13,11 +13,11 @@ const Login = () => {
 
       <div className={classes.authButtons}>
         
-        <VKIDAuthComponent/>     
-        {/* <ATVKbtn/>  
+        {/* <VKIDAuthComponent/>      */}
+        <ATVKbtn/>  
         <ATOKbtn/>
         <ATYAbtn/>
-        <ATMLbtn/> */}
+        <ATMLbtn/>
       </div>
       
     </div>
