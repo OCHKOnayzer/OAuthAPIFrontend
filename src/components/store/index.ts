@@ -184,7 +184,7 @@ export default class Store {
     async logOut(){ 
         try{ 
 
-            const result = await AuthService.logout();
+            await AuthService.logout();
 
             this.setAuth(false);
             this.setUser({})
