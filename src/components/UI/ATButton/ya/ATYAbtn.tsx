@@ -1,11 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import classes from '../style.module.css';
 import yaClasses from './style.module.css';
 import Store from '../../../store';
 
 const ATYAbtn = () => {
 
-  const [goData,setGoData] = useState<boolean>(false)
 
   const store = new Store();
 
@@ -19,8 +18,6 @@ const ATYAbtn = () => {
   const YandexOAuth = () => {
     const authUrl = `https://oauth.yandex.ru/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}`;
     window.location.href = authUrl;
-
-    setGoData(prev=> !prev)
 
     const provider = 'yandex'
 

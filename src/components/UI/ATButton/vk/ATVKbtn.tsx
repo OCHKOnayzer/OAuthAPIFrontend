@@ -3,9 +3,6 @@ import classes from '../style.module.css';
 import vkClasses from './style.module.css'
 import vk from '../../../image/vk.svg';
 import Store from '../../../store';
-import * as VKID from '@vkid/sdk';
-
-console.log(VKID); 
 
 const ATVKbtn = () => {
 
