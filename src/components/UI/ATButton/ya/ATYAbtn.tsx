@@ -9,7 +9,9 @@ import Store from '../../../store';
 
 const ATYAbtn = () => {
 
-  const [goData,setGoData] = useState<boolean>(false);
+  const [goData,setGoData] = useState<boolean>(false)
+
+  const store = new Store();
 
   const handleError = () =>{ 
 
@@ -24,31 +26,38 @@ const ATYAbtn = () => {
 
     setGoData(prev=> !prev)
 
+    const provider = 'yandex'
+
+    localStorage.setItem('provider', provider)
+
   };
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const code:any = urlParams.get('code');
-    console.log('Received code:', code);
 
-    if (code) {
+    const parametr = localStorage.getItem('provider')
 
-      Store.loginWithYandex(code,handleError)
-        .then(() => {
-         console.log(code)
-        })
-        .catch((error: any) => {
-          console.error('Ошибка обработки авторизации', error);
-        });
+    if(parametr === 'yandex'){ 
+      if (code) {
+        store.loginWithYandex(code,handleError)
+          .then(() => {
+            console.log(code)
+            window.location.href = '/'
+          })
+          .catch((error: any) => {
+            console.error('Ошибка обработки авторизации', error);
+          });
+      }
     }
-  }, [goData]);
+  }, []);
 
   return (
     <div>
       <button className={`${classes.authBtn} ${yaClasses.yandexBtn}`} onClick={YandexOAuth}>
         <div className={classes.btnContent}>
           <span className={classes.logoWrapper}>
-            <img src={vk} alt="Yandex logo" />
+            
           </span>
           <span>Войти через Yandex</span>
         </div>

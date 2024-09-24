@@ -1,29 +1,38 @@
 // Profile.jsx
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './style.module.css';
+import { StoreContext } from '../../..';
+import { IUser } from '../../../types/IUser';
 
 const Profile = () => {
+
+  const store = useContext(StoreContext);
+
   const handleLogout = () => {
-    // Логика выхода из системы
+    
+    store.logOut()
+
     console.log('Выход из системы');
   };
 
+
+  const user: IUser = store.user;
   return (
     <div className={classes.profileContainer}>
       <div className={classes.profileCard}>
         <div className={classes.profileTitle}>Профиль пользователя</div>
         <div className={classes.profileDetails}>
           <div>
-            <strong>Имя:</strong> 
+            <strong>Имя:{store.user.first_name}</strong> 
           </div>
           <div>
-            <strong>Фамилия:</strong> 
+            <strong>Фамилия:{user.last_name}</strong> 
           </div>
           <div>
-            <strong>Телефон:</strong>
+            <strong>Телефон:{user.number}</strong>
           </div>
           <div>
-            <strong>Почта:</strong>
+            <strong>Почта:{user.email}</strong>
           </div>
         </div>
         <button className={classes.logoutButton} onClick={handleLogout}>

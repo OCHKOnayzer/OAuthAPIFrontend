@@ -6,21 +6,18 @@ import Store from './components/store';
 
 const store = new Store();
 
-export const Context = createContext({ 
-  store
-})
-
+export const StoreContext = createContext<Store>(store);
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Context.Provider value ={{ 
+    <StoreContext.Provider value ={ 
       store
-     }}>
+     }>
       <Router>
-        <App/>
+      <App />
       </Router>
-    </Context.Provider>
+    </StoreContext.Provider>
   </React.StrictMode>
 );

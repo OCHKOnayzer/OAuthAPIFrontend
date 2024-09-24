@@ -1,21 +1,41 @@
-import React,{useContext} from 'react';
+import React,{useContext, useEffect, useState} from 'react';
 import { Route, Routes } from "react-router-dom";
-import { Context } from '.';
 import Login from './components/page/login/Login';
 import Profile from './components/page/profile/Profile';
+import { StoreContext } from '.';
+import { observer } from "mobx-react-lite";
 function App() {
 
-  const {store} = useContext(Context)
+  const store = useContext(StoreContext);
 
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/profile" element={<Profile/>}/>
+
+
+  console.log()
+
+  if(store.isAuth === false){ 
+    return (
+      <div>
+        <Routes>
+
         <Route path="/" element={<Login/>}/>
+          
+        </Routes>
+      </div>
+    ) 
+  }else{ 
+    return (
+      <div className="App">
+        <Routes>
 
-      </Routes>
-    </div>
-  );
+          <Route path="/" element={<Profile/>}/>
+
+        </Routes>
+      </div>
+    );
+
+  }
+
+  
 }
 
-export default App;
+export default observer(App);

@@ -1,35 +1,68 @@
-import React,{FC} from 'react';
+import React, { useEffect } from 'react';
 import classes from '../style.module.css';
-import mlClasses from './style.module.css'
+import mlClasses from './style.module.css';
 import vk from '../../../image/vk.svg';
+import Store from '../../../store';
 
 const ATMLbtn = () => {
+  const handleError = () => {
+   
+  };
 
-  const VK_CLIENT_ID = '';
-  
-  const VK_REDIRECT_URI = '';
+  const store = new Store();
 
-  const refAuthVk = () => { 
+  const Mail_CLIENT_ID = '91bdcb05404e4dad9fdee6d080c7426c';
+  const Mail_REDIRECT_URI = 'http://localhost:3000';
 
-    const vkAuthUrl = ''
+  const refAuthMailRu = () => {
+    const mailAuthUrl = `https://oauth.mail.ru/login?client_id=${Mail_CLIENT_ID}&response_type=code&scope=userinfo,contacts&redirect_uri=${Mail_REDIRECT_URI}&state=some_state`;
+    window.location.href = mailAuthUrl;   
+    
+    const provider = 'mailrus'
 
-    window.location.href = vkAuthUrl;
+    localStorage.setItem('provider', provider)
+    
+  };
 
+  useEffect(() => {
+    const hashParams = new URLSearchParams(window.location.search.substring(1));
+    const code = hashParams.get('code');
+
+    const parametr = localStorage.getItem('provider')
+
+    if(parametr === 'mailrus'){
+
+      console.log('code mail ru:', code);
+
+    if (code) {
+    
+      store.loginWithMailRu(code, handleError)
+        .then(() => {
+          setTimeout(()=>{ 
+            window.location.href = '/'
+          },100)
+          console.log(store.isAuth)
+          
+        })
+        .catch((error: any) => {
+          console.error('Ошибка обработки авторизации', error);
+        });
+    }
   }
+  }, []);
 
   return (
     <div>
-      <button className={`${classes.authBtn} ${mlClasses.mailBtn}`} onClick={refAuthVk}>
+      <button className={`${classes.authBtn} ${mlClasses.mailBtn}`} onClick={refAuthMailRu}>
         <div className={classes.btnContent}>
           <span className={classes.logoWrapper}>
-            <img src={vk} alt="" />
+            <img src={vk} alt="Mail.ru" />
           </span>
           <span>Войти через Mail.ru</span>
         </div>
-       
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default ATMLbtn
+export default ATMLbtn;

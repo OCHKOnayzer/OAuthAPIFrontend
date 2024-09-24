@@ -1,3 +1,4 @@
+
 import { apiAuth } from "../http";
 
 export default class AuthService {
@@ -9,6 +10,10 @@ export default class AuthService {
 
     // Авторизация через ВКонтакте
     static async vkLogin(code: string) {
+        return apiAuth.post('/oauth/vk', { code });
+    }
+
+    static async vkIdLogin(code:string){ 
         return apiAuth.post('/oauth/vkid', { code });
     }
 
@@ -22,7 +27,6 @@ export default class AuthService {
         return apiAuth.post('/oauth/mailru', { code });
     }
 
-    // Logout
     static async logout() {
         return apiAuth.post('/logout');
     }

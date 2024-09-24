@@ -1,12 +1,17 @@
-import React,{FC, useEffect} from 'react';
+import React,{FC, useEffect,useState} from 'react';
 import classes from '../style.module.css';
 import vkClasses from './style.module.css'
 import vk from '../../../image/vk.svg';
 import Store from '../../../store';
+import * as VKID from '@vkid/sdk';
+
+console.log(VKID); 
 
 const ATVKbtn = () => {
 
-  
+  const [goDataVk,setGoDataVk] = useState<boolean>(false)
+
+  const store = new Store()
 
   const handleError = () =>{ 
 
@@ -14,37 +19,49 @@ const ATVKbtn = () => {
 
   const VK_CLIENT_ID = '52310644';
   
-  const VK_REDIRECT_URI = 'https://427e-88-80-62-218.ngrok-free.app';
+  const VK_REDIRECT_URI = 'https://8d47-92-39-220-81.ngrok-free.app';
 
-  const VK_SCOPE = 'email,profile,phone,offline';
+  const VK_SCOPE = "email";
 
   const refAuthVk = () => { 
 
     const vkAuthUrl = `https://oauth.vk.com/authorize?client_id=${VK_CLIENT_ID}&display=page&redirect_uri=${VK_REDIRECT_URI}&scope=${VK_SCOPE}&response_type=code&v=5.131`;
 
     window.location.href = vkAuthUrl;
+  
+    const provider = 'vk'
 
+    localStorage.setItem('provider', provider)
+   
   }
-  const urlParams = new URLSearchParams(window.location.search);
-  const code: string | null = urlParams.get('code');
 
-  if (code) {
+  useEffect(()=>{ 
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const code: string | null = urlParams.get('code');
+  
     
-    window.localStorage.setItem('auth_code', code);
-
-    const auth_code = window.localStorage.getItem('auth_code');
-
-    console.log(auth_code)
-
-    Store.loginWithVk(auth_code, handleError)
-      .then(() => {
-        console.log('Авторизация прошла успешно');
-
-      })
-      .catch((error: any) => {
-        console.error('Ошибка обработки авторизации', error);
-      });
-  }
+    const parametr = localStorage.getItem('provider')
+    if (code) {
+      
+      window.localStorage.setItem('auth_code', code);
+  
+      const auth_code = window.localStorage.getItem('auth_code');
+  
+      console.log(auth_code)
+  
+      store.loginWithVk(code, handleError)
+        .then(() => {
+          console.log('Авторизация прошла успешно');
+          setTimeout(()=>{ 
+            window.location.href = '/'
+          },100)   
+        })
+        .catch((error: any) => {
+          console.error('Ошибка обработки авторизации', error);
+        });
+    }
+  },[])
 
   return (
     <div>
@@ -53,7 +70,7 @@ const ATVKbtn = () => {
           <span className={classes.logoWrapper}>
             <img src={vk} alt=""/>
           </span>
-          <span>Войти через Vk ID</span>
+          <span>Войти через Vk</span>
         </div>
        
       </button>

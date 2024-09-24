@@ -1,14 +1,8 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, set } from "mobx";
 import AuthService from "../service/AuthService";
 import axios from "axios";
 import { AUTH_API_URL } from "../http";
-
-interface IUser {
-    user_id?: number;
-    first_name?: string;
-    last_name?:string;
-    email?: string;
-}
+import { IUser } from "../../types/IUser";
 
 export default class Store {
     user: IUser = {};
@@ -27,68 +21,183 @@ export default class Store {
         this.user = user;
     }
 
-    async checkAuth(): Promise<void> {
+    async checkAuth() {
+
         try {
-            const token = localStorage.getItem('token');
-            if (token) {
-                const response = await axios.get(`${AUTH_API_URL}/refresh`, {
+
+            let accessToken = localStorage.getItem('access_token');
+
+            let provider = localStorage.getItem('provider')
+
+            console.log("token",accessToken)
+            console.log("provider",provider)
+
+            if (accessToken) {
+                const response = await axios.get(`${AUTH_API_URL}/checkAuth`, {
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        Authorization: `Bearer ${accessToken}`
                     },
-                    withCredentials: true,
+                    withCredentials: true
                 });
-                localStorage.setItem('token', response.data.accessToken);
+
+                console.log("user data",response.data.user)
+
                 this.setAuth(true);
+
+                console.log(this.isAuth)
+
                 this.setUser(response.data.user);
+
+                console.log("user data:",response.data.user.last_name)
+
+            } else {
+                this.setAuth(false);
+                this.setUser({});
             }
         } catch (e) {
             console.log(e);
+            this.setAuth(false);
+            this.setUser({});
         }
     }
 
-    // Статический метод, которому передается экземпляр Store
-    static async loginWithYandex( code: any, handleError: (error: any) => void): Promise<void> {
-        
-        console.log('code:',code)
+    async loginWithYandex(code: string, handleError: (error: any) => void): Promise<void> {
+        console.log('code:', code);
 
         try {
             const response = await AuthService.yandexLogin(code);
-            console.log('Response from Yandex login:', response);  // Вывод ответа для отладки
-            
+            const { user, accessToken,provider } = response.data;
+
+            localStorage.setItem('provider',provider);
+
+            console.log(user)
+
+            this.setUser(user);
+            this.setAuth(true);
+
+            localStorage.setItem('access_token', accessToken);
+
+            console.log("token:",localStorage.getItem('access_token'))
+
         } catch (e) {
-            console.log(e);
+            console.error(e);
             handleError(e);
         }
     }
 
-    static async loginWithVk( code: any, handleError: (error: any) => void): Promise<void> {
-        
-        console.log('code:',code)
-
+    async loginWithVk(code: string, handleError: (error: any) => void): Promise<void> {
+        console.log('code:', code);
+    
         try {
+            
             const response = await AuthService.vkLogin(code);
-            console.log('Response from vk login:', response);
-           
+
+            const { user, accessToken, provider } = response.data;
+
+            console.log(response.data)
+    
+            console.log('Access token:', accessToken);
+            console.log('Provider:', provider);
+    
+            this.setUser(user);
+            this.setAuth(true);
+
+            localStorage.setItem('access_token', accessToken);
+    
+            console.log("token:",localStorage.getItem('access_token'))
+
         } catch (e) {
-            console.log(e);
+            console.error('Error during login with VK:', e);
             handleError(e);
         }
     }
 
-    static async loginWithOk( code: any, handleError: (error: any) => void): Promise<void> {
-        
-        console.log('code:',code)
+    async loginWithVkId(token: string, handleError: (error: any) => void): Promise<void> {
+        try {
+            // Отправка данных на сервер для сохранения
+            const response = await AuthService.vkIdLogin(token);
+    
+            const { user, accessToken, provider } = response.data;
 
-        console.log('hello world')
+            console.log("provider", provider)
+
+            localStorage.setItem('provider',provider);
+
+            this.setUser(user);
+            this.setAuth(true);
+
+
+            localStorage.setItem('access_token', accessToken);
+    
+        } catch (e) {
+            console.error('Ошибка при авторизации через VK ID:', e);
+            handleError(e);
+        }
+    }
+
+    async loginWithOk(code: string, handleError: (error: any) => void): Promise<void> {
+        console.log('code:', code);
 
         try {
             const response = await AuthService.okLogin(code);
-            console.log('Response from OK login:', response);
-           
+            const { user, accessToken, provider } = response.data;
+
+            console.log("provider", provider)
+
+            localStorage.setItem('provider',provider);
+
+            console.log("token access:", accessToken)
+
+            this.setUser(user);
+            this.setAuth(true);
+
+
+            localStorage.setItem('access_token', accessToken);
         } catch (e) {
-            console.log(e);
+            console.error(e);
             handleError(e);
         }
     }
+
+    async loginWithMailRu(code: string, handleError: (error: any) => void): Promise<void> {
+        console.log('code:', code);
+
+        try {
+            const response = await AuthService.mailruLogin(code);
+            const { user, accessToken, provider } = response.data;
+
+            console.log("provider", provider)
+
+            localStorage.setItem('provider',provider);
+
+            this.setUser(user);
+            this.setAuth(true);
+
+
+            localStorage.setItem('access_token', accessToken);
+        } catch (e) {
+            console.error(e);
+            handleError(e);
+        }
+    }
+
+    async logOut(){ 
+        try{ 
+
+            const result = await AuthService.logout();
+
+            this.setAuth(false);
+            this.setUser({})
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('provider')
+
+
+        }catch(e:any){ 
+            console.log(e.message)
+        }
+    }
+
+    
+    
 
 }
