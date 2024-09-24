@@ -43,7 +43,7 @@ const ATYAbtn = () => {
           });
       }
     }
-  }, []);
+  }, [store]);
 
   return (
     <div>

@@ -54,7 +54,7 @@ const VKIDAuthComponent = () => {
     } else {
       console.error('Authorization code not found in URL.');
     }
-  }, []);
+  }, [store]);
 
   const handleError = (error: any) => {
     console.error('Ошибка авторизации VK ID:', error);

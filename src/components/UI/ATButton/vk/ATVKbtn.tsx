@@ -56,7 +56,7 @@ const ATVKbtn = () => {
           console.error('Ошибка обработки авторизации', error);
         });
     }
-  },[])
+  },[store])
 
   return (
     <div>

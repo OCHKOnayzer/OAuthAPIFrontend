@@ -49,7 +49,7 @@ const ATMLbtn = () => {
         });
     }
   }
-  }, []);
+  }, [store]);
 
   return (
     <div>

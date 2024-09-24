@@ -1,12 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import classes from '../style.module.css';
 import okClasses from './style.module.css';
 import ok from '../../../image/ok.svg';
 import Store from '../../../store';
 
 const ATOKbtn = () => {
-
-  const [goData,setGoData] = useState<boolean>(false)
 
   const handleError = () => {
     // Обработка ошибок
@@ -24,8 +22,6 @@ const ATOKbtn = () => {
     const okAuthUrl = `https://connect.ok.ru/oauth/authorize?client_id=${OK_CLIENT_ID}&scope=${OK_SCOPE}&response_type=${response_type}&redirect_uri=${encodeURIComponent(OK_REDIRECT_URI)}&layout=${OK_LAYOUT}`;
     
     window.location.href = okAuthUrl;
-
-    setGoData(prev=> !prev);
 
     const provider = 'okAuth'
 
@@ -66,7 +62,7 @@ const ATOKbtn = () => {
       }
     }
     
-  }, [goData]);
+  }, [store]);
 
   return (
     <div>
