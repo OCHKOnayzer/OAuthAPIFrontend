@@ -114,7 +114,7 @@ export default class Store {
 
     async loginWithVkId(token: string, handleError: (error: any) => void): Promise<void> {
         try {
-            // Отправка данных на сервер для сохранения
+            
             const response = await AuthService.vkIdLogin(token);
     
             const { user, accessToken, provider } = response.data;

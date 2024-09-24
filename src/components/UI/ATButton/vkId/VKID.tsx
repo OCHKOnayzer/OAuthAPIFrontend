@@ -5,7 +5,7 @@ import Store from '../../../store';
 const VKIDAuthComponent = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const store = new Store();
-  const oneTapInitialized = useRef(false); // Флаг для проверки инициализации OneTap
+  const oneTapInitialized = useRef(false);
 
   useEffect(() => {
     VKID.Config.init({
@@ -20,14 +20,12 @@ const VKIDAuthComponent = () => {
       oneTapInitialized.current = true;
     }
 
-    // Извлечение кода авторизации из URL
     const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code'); // Извлечение параметра code
+    const code = urlParams.get('code');
 
     if (code) {
       console.log('Authorization code:', code);
 
-      // Отправляем код на сервер для обмена на токены
       store.loginWithVkId(code, handleError);
     } else {
       console.error('Authorization code not found in URL.');

@@ -5,8 +5,6 @@ import yaClasses from './style.module.css';
 import vk from '../../../image/vk.svg';
 import Store from '../../../store';
 
-
-
 const ATYAbtn = () => {
 
   const [goData,setGoData] = useState<boolean>(false)
