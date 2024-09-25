@@ -40,16 +40,14 @@ const VKIDAuthComponent = () => {
     const verifier = generateCodeVerifier();
     setCodeVerifier(verifier);
 
-    // Генерация code_challenge из code_verifier
-    generateCodeChallenge(verifier).then((codeChallenge) => {
+    // Генерация code_challenge из code_verifie
+
       // Инициализация VKID SDK с использованием code_challenge
       VKID.Config.init({
         app: '52336772',
         redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app',
         scope: 'email phone',
-      
-      });
-    });
+      })
 
     if (!oneTapInitialized.current && containerRef.current) {
       const oneTap = new VKID.OneTap();
