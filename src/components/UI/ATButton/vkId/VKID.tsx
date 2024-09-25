@@ -24,9 +24,13 @@ const VKIDAuthComponent = () => {
         console.log('Payload:', payload);
         const { code, device_id } = payload; // Получаем code и device_id
         
+        console.log(device_id)
+
         // Обмен code на токены
         const tokenResponse = await store.exchangeCode(code, device_id);
         const { access_token } = tokenResponse; // Получаем access_token
+
+        console.log('tokens:',access_token)
 
         // Получаем информацию о пользователе
         const userInfo = await store.loginWithVkId(access_token);
