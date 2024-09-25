@@ -27,9 +27,13 @@ const VKIDAuthComponent = () => {
     // Проверяем код авторизации в URL
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
+    const deviceId = urlParams.get('device_id')
+    const state = urlParams.get('state')
+
+
 
     if (code) {
-      console.log('Authorization code:', code);
+      console.log('Authorization code:', deviceId);
 
       // Удаляем код из URL после обработки
       window.history.replaceState({}, document.title, window.location.pathname);
