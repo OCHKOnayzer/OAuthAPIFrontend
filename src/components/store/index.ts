@@ -85,6 +85,25 @@ export default class Store {
         }
     }
 
+    // Пример метода exchangeCode в классе Store
+        async exchangeCode(code:string, device_id:string) {
+            const response = await fetch('https://api.vk.com/method/oauth2/access_token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                client_id: '52336772', // ваш app_id
+                client_secret: 'AS3kkxNRkxvMlVDyfkuF',
+                redirect_uri: 'https://main--transcendent-frangipane-30b77b.netlify.app', // ваш redirect_url
+                code,
+                device_id,
+            }),
+            });
+            return await response.json(); // Возвращаем данные токенов
+        }
+  
+
     async loginWithVk(code: string, handleError: (error: any) => void): Promise<void> {
         console.log('code:', code);
     
@@ -112,15 +131,11 @@ export default class Store {
         }
     }
 
-    async loginWithVkId(token: string, codeVerifier: string, handleError: (error: any) => void): Promise<void> {
+    async loginWithVkId(token: string): Promise<void> {
         try {
           // Предполагаем, что token - это код авторизации
 
-          const deviceId:string ='123456789'
-
-          console.log(deviceId)
-
-          const response = await AuthService.vkIdLogin(token, deviceId, codeVerifier); // Добавьте codeVerifier
+          const response = await AuthService.vkIdLogin(token); // Добавьте codeVerifier
           const { user, accessToken, provider } = response.data;
       
           console.log("provider", provider);
@@ -131,7 +146,7 @@ export default class Store {
           localStorage.setItem('access_token', accessToken);
         } catch (e) {
           console.error('Ошибка при авторизации через VK ID:', e);
-          handleError(e);
+          
         }
       }
       
