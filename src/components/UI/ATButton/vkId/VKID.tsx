@@ -8,10 +8,14 @@ const VKIDAuthComponent = () => {
   const oneTapInitialized = useRef(false);
 
   useEffect(() => {
+
     VKID.Config.init({
-      app: '52336772',
-      redirectUrl: 'https://e35f-92-39-220-81.ngrok-free.app',
-      scope: 'email phone',
+      app: '52336772', // Идентификатор приложения.
+      redirectUrl: 'https://e35f-92-39-220-81.ngrok-free.app', // Адрес для перехода после авторизации.
+      state: 'dj29fnsadjsd82', // Произвольная строка состояния приложения.
+      codeVerifier: 'FGH767Gd65', // Верификатор в виде случайной строки. Обеспечивает защиту передаваемых данных.
+      scope: 'email phone', // Список прав доступа, которые нужны приложению.
+
     });
 
     if (!oneTapInitialized.current && containerRef.current) {
@@ -48,3 +52,4 @@ const VKIDAuthComponent = () => {
 };
 
 export default VKIDAuthComponent;
+
