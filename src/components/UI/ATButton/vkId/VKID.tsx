@@ -47,9 +47,8 @@ const VKIDAuthComponent = () => {
         app: '52336772',
         redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app',
         scope: 'email phone',
-        codeChallenge: codeChallenge, // Передаем code_challenge в VKID SDK
-        codeChallengeMethod: 'S256', // Метод хеширования (SHA256)
-      }as any);
+      
+      });
     });
 
     if (!oneTapInitialized.current && containerRef.current) {
