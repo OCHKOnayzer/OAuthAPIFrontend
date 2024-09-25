@@ -116,7 +116,9 @@ export default class Store {
         try {
           // Предполагаем, что token - это код авторизации
 
-          const deviceId:any = localStorage.getItem('device_id')
+          const deviceId:string ='123456789'
+
+          console.log(deviceId)
 
           const response = await AuthService.vkIdLogin(token, deviceId, codeVerifier); // Добавьте codeVerifier
           const { user, accessToken, provider } = response.data;
