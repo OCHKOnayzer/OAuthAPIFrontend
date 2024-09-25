@@ -21,7 +21,7 @@ const VKIDAuthComponent = () => {
     generateDeviceId();
 
     VKID.Config.init({
-      app: '52336772',
+      app: '52359597',
       redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app/',
       scope: 'email phone',
     });
