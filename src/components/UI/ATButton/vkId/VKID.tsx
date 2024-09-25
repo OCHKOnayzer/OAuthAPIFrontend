@@ -7,22 +7,22 @@ const VKIDAuthComponent = () => {
   const store = new Store();
   const oneTapInitialized = useRef(false);
 
+  VKID.Config.init({
+    app: '52336772', // Идентификатор приложения.
+    redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app', // Адрес для перехода после авторизации.
+    state: 'dj29fnsadjsd82', // Произвольная строка состояния приложения.
+    codeVerifier: 'FGH767Gd65', // Верификатор в виде случайной строки. Обеспечивает защиту передаваемых данных.
+    scope: 'email phone', // Список прав доступа, которые нужны приложению.
+
+  });
+
+  if (!oneTapInitialized.current && containerRef.current) {
+    const oneTap = new VKID.OneTap();
+    oneTap.render({ container: containerRef.current });
+    oneTapInitialized.current = true;
+  }
+
   useEffect(() => {
-
-    VKID.Config.init({
-      app: '52336772', // Идентификатор приложения.
-      redirectUrl: 'https://e35f-92-39-220-81.ngrok-free.app', // Адрес для перехода после авторизации.
-      state: 'dj29fnsadjsd82', // Произвольная строка состояния приложения.
-      codeVerifier: 'FGH767Gd65', // Верификатор в виде случайной строки. Обеспечивает защиту передаваемых данных.
-      scope: 'email phone', // Список прав доступа, которые нужны приложению.
-
-    });
-
-    if (!oneTapInitialized.current && containerRef.current) {
-      const oneTap = new VKID.OneTap();
-      oneTap.render({ container: containerRef.current });
-      oneTapInitialized.current = true;
-    }
 
     // Проверяем код авторизации в URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -34,9 +34,6 @@ const VKIDAuthComponent = () => {
 
     if (code) {
       console.log('Authorization code:', deviceId);
-
-      // Удаляем код из URL после обработки
-      window.history.replaceState({}, document.title, window.location.pathname);
 
       
     } else {
