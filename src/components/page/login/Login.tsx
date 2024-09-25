@@ -18,22 +18,20 @@ const Login = () => {
       .replace(/\+/g, '-')
       .replace(/\//g, '_')
       .replace(/=+$/, ''); // URL-safe Base64
-  }
+}
+      const [deviceId, setDeviceId] = useState<string>('');
 
-  const [deviceId, setDeviceId] = useState<string>('');
+      useEffect(() => { 
+        // Генерация deviceId, если его нет
+        const newDeviceId = generateCodeVerifier(); // Используем случайную строку как deviceId
+      
+        setDeviceId(newDeviceId);
+        localStorage.setItem('device_id', newDeviceId); // Сохраняем новое значение в localStorage
 
-  useEffect(()=>{ 
-   
-   // Генерация deviceId, если его нет
-    const newDeviceId = generateCodeVerifier(); // Используем случайную строку как deviceId
-   
-    setDeviceId(newDeviceId);
+        console.log("hello world:", deviceId); // Логируем новое значение deviceId
 
-    localStorage.setItem('device_id', deviceId);
-
-    console.log("hello world:",deviceId)
-
-  },[])
+      },[])
+ 
 
   return (
     <div className={classes.authContainer}>
@@ -41,7 +39,6 @@ const Login = () => {
       <h1 className={classes.authTitle}>Войти через социальные сети</h1>
 
       <div className={classes.authButtons}>
-        
         <VKIDAuthComponent/>     
         <ATVKbtn/>  
         <ATOKbtn/>
