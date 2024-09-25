@@ -22,7 +22,7 @@ const VKIDAuthComponent = () => {
 
     VKID.Config.init({
       app: '52336772',
-      redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app/',
+      redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app',
       scope: 'email phone',
     });
 
@@ -41,10 +41,7 @@ const VKIDAuthComponent = () => {
     oneTap.on('error', (error) => {
       console.error('Ошибка авторизации VK ID:', error);
     });
-
     }
-    
-
   }, [store]);
 
   const handleError = (error: any) => {
