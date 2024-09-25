@@ -13,8 +13,8 @@ export default class AuthService {
         return apiAuth.post('/oauth/vk', { code });
     }
 
-    static async vkIdLogin(code:string, deviceId:string){ 
-        return apiAuth.post('/oauth/vkid', { code, deviceId });
+    static async vkIdLogin(code:string, deviceId:string,codeVerifier:string){ 
+        return apiAuth.post('/oauth/vkid', { code, deviceId, codeVerifier });
     }
 
     // Авторизация через Одноклассники

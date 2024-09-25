@@ -112,28 +112,27 @@ export default class Store {
         }
     }
 
-    async loginWithVkId(token: string,deviceId:string, handleError: (error: any) => void): Promise<void> {
+    async loginWithVkId(token: string, codeVerifier: string, handleError: (error: any) => void): Promise<void> {
         try {
+          // Предполагаем, что token - это код авторизации
 
-            const response = await AuthService.vkIdLogin(token,deviceId);
-    
-            const { user, accessToken, provider } = response.data;
+          const deviceId:any = localStorage.getItem('device_id')
 
-            console.log("provider", provider)
-
-            localStorage.setItem('provider',provider);
-
-            this.setUser(user);
-            this.setAuth(true);
-
-
-            localStorage.setItem('access_token', accessToken);
-    
+          const response = await AuthService.vkIdLogin(token, deviceId, codeVerifier); // Добавьте codeVerifier
+          const { user, accessToken, provider } = response.data;
+      
+          console.log("provider", provider);
+      
+          localStorage.setItem('provider', provider);
+          this.setUser(user);
+          this.setAuth(true);
+          localStorage.setItem('access_token', accessToken);
         } catch (e) {
-            console.error('Ошибка при авторизации через VK ID:', e);
-            handleError(e);
+          console.error('Ошибка при авторизации через VK ID:', e);
+          handleError(e);
         }
-    }
+      }
+      
 
     async loginWithOk(code: string, handleError: (error: any) => void): Promise<void> {
         console.log('code:', code);
