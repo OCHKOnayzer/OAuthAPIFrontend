@@ -39,6 +39,9 @@ const Login = () => {
       <h1 className={classes.authTitle}>Войти через социальные сети</h1>
 
       <div className={classes.authButtons}>
+
+      deviceId:{deviceId}
+
         <VKIDAuthComponent/>     
         <ATVKbtn/>  
         <ATOKbtn/>
