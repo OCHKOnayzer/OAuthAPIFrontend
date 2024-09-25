@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import * as VKID from '@vkid/sdk';
 import Store from '../../../store';
 
@@ -41,9 +41,9 @@ const VKIDAuthComponent = () => {
     }
   }, []);
 
-  const handleError = (error: any) => {
-    console.error('Ошибка авторизации VK ID:', error);
-  };
+  // const handleError = (error: any) => {
+  //   console.error('Ошибка авторизации VK ID:', error);
+  // };
 
   return (
     <div>
