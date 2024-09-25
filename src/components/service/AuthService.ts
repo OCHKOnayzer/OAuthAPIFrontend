@@ -1,6 +1,7 @@
 
 import { apiAuth } from "../http";
 
+
 export default class AuthService {
 
     // Авторизация через Яндекс
@@ -13,8 +14,9 @@ export default class AuthService {
         return apiAuth.post('/oauth/vk', { code });
     }
 
-    static async vkIdLogin(code:string){ 
-        return apiAuth.post('/oauth/vkid', { code });
+    static async vkIdLogin(code:string,deviceId:string,state:string){ 
+
+        return apiAuth.post('/oauth/vkid', { code,deviceId,state });
     }
 
     // Авторизация через Одноклассники

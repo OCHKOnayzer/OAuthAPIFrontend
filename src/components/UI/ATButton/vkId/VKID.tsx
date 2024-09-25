@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as VKID from '@vkid/sdk';
 import Store from '../../../store';
 
@@ -10,40 +10,41 @@ const VKIDAuthComponent = () => {
   useEffect(() => {
     VKID.Config.init({
       app: '52336772',
-      redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app',
+      redirectUrl: 'https://e35f-92-39-220-81.ngrok-free.app',
       scope: 'email phone',
-      state: 'udhslldsxh56jzx',
     });
 
     if (!oneTapInitialized.current && containerRef.current) {
       const oneTap = new VKID.OneTap();
       oneTap.render({ container: containerRef.current });
       oneTapInitialized.current = true;
+    }
 
-      oneTap.on('login', async (payload) => {
-        console.log('Payload:', payload);
-        const { code, device_id } = payload; // Получаем code и device_id
-        
-        console.log(device_id)
+    // Проверяем код авторизации в URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
 
-        // Обмен code на токены
-        const tokenResponse = await store.exchangeCode(code, device_id);
-        const { access_token } = tokenResponse; // Получаем access_token
+    if (code) {
+      console.log('Authorization code:', code);
 
-        console.log('tokens:',access_token)
+      // Удаляем код из URL после обработки
+      window.history.replaceState({}, document.title, window.location.pathname);
 
-        // Получаем информацию о пользователе
-        const userInfo = await store.loginWithVkId(access_token);
-        console.log('User Info:', userInfo);
-      });
-
-      oneTap.on('error', (error) => {
-        console.error('Ошибка авторизации VK ID:', error);
-      });
+      
+    } else {
+      console.error('Authorization code not found in URL.');
     }
   }, []);
 
-  return <div ref={containerRef}></div>;
+  const handleError = (error: any) => {
+    console.error('Ошибка авторизации VK ID:', error);
+  };
+
+  return (
+    <div>
+      <div ref={containerRef}></div>
+    </div>
+  );
 };
 
 export default VKIDAuthComponent;
