@@ -6,7 +6,7 @@ const VKIDAuthComponent = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const store = new Store();
   const oneTapInitialized = useRef(false);
-  const codeVerifier = 'AXKbf0z9tG2lugDm9YKRmnmihXWuzOZAe3rLec3zVcI';
+  const codeVerifier = 'FGH767Gd65dsf76TgBh98vGbvDsF7GhEtr67GtRf';
 
   useEffect(() => {
     // Инициализация конфигурации VK ID SDK
