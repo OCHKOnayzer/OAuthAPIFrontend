@@ -6,7 +6,7 @@ const VkIdAuthTest = () => {
 
     useEffect(()=>{ 
 
-        const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGH767gd65dsf76TFggBh98vGbv';
+        const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGHdsjhdjksbngBh78vGbv';
 
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');

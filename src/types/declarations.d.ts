@@ -53,7 +53,6 @@ export class Config {
 
 export class Auth {
   static login(): Promise<any>;
-  static exchangeCode(code: string): Promise<{ access_token: string; refresh_token: string; id_token: string }>;
   static userInfo(accessToken: string): Promise<any>;
 }
 

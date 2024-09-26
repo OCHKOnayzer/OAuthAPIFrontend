@@ -4,7 +4,7 @@ import * as VKID from '@vkid/sdk';
 const VKIDAuthComponent = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const oneTapInitialized = useRef(false);
-  const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGH767gd65dsf76TFggBh98vGbv';
+  const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGHdsjhdjksbngBh78vGbv';
 
   useEffect(() => {
     VKID.Config.init({
