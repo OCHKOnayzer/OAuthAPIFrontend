@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import classes from '../style.module.css';
 import Store from '../../../store';
+import vkClasses from './style.module.css'
 
 const VKIDAuthComponent = () => {
   const store = new Store();
@@ -28,7 +28,7 @@ const VKIDAuthComponent = () => {
 
   return (
     <div>
-      <button className={`${classes.authBtn}`} onClick={refAuthVk}>
+      <button className={`${classes.authBtn}  ${vkClasses.vkBtn}`} onClick={refAuthVk}>
         <div className={classes.btnContent}>
           <span>Войти через VkId</span>
         </div>

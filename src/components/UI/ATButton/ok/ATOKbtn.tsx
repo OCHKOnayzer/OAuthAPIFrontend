@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import classes from '../style.module.css';
 import okClasses from './style.module.css';
-import ok from '../../../image/ok.svg';
 import Store from '../../../store';
 
 const ATOKbtn = () => {
@@ -70,7 +69,6 @@ const ATOKbtn = () => {
       <button className={`${classes.authBtn} ${okClasses.okBtn}`} onClick={refAuthOk}>
         <div className={classes.btnContent}>
           <span className={classes.logoWrapper}>
-            <img src={ok} alt="OK" />
           </span>
           <span>Войти через OK</span>
         </div>

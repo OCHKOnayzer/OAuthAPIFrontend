@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import classes from '../style.module.css';
 import mlClasses from './style.module.css';
-import vk from '../../../image/vk.svg';
 import Store from '../../../store';
 
 const ATMLbtn = () => {
@@ -56,7 +55,6 @@ const ATMLbtn = () => {
       <button className={`${classes.authBtn} ${mlClasses.mailBtn}`} onClick={refAuthMailRu}>
         <div className={classes.btnContent}>
           <span className={classes.logoWrapper}>
-            <img src={vk} alt="Mail.ru" />
           </span>
           <span>Войти через Mail.ru</span>
         </div>

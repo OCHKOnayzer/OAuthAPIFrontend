@@ -50,7 +50,6 @@ const ATYAbtn = () => {
       <button className={`${classes.authBtn} ${yaClasses.yandexBtn}`} onClick={YandexOAuth}>
         <div className={classes.btnContent}>
           <span className={classes.logoWrapper}>
-            
           </span>
           <span>Войти через Yandex</span>
         </div>

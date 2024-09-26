@@ -1,0 +1,10 @@
+.vkBtn {
+    background-color: #4680C2;
+    color: white;
+    transition: 300ms;
+}
+  
+.okBtn:hover {
+    background-color: #cc6906;
+}
+  

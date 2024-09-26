@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import classes from '../style.module.css';
-import vkClasses from './style.module.css'
-import vk from '../../../image/vk.svg';
+import vkClasses from './style.module.css';
 import Store from '../../../store';
 
 const ATVKbtn = () => {
@@ -63,7 +62,6 @@ const ATVKbtn = () => {
       <button className={`${classes.authBtn} ${vkClasses.vkBtn}`} onClick={refAuthVk}>
         <div className={classes.btnContent}>
           <span className={classes.logoWrapper}>
-            <img src={vk} alt=""/>
           </span>
           <span>Войти через Vk</span>
         </div>
