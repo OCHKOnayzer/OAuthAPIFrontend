@@ -6,7 +6,7 @@ const VKIDAuthComponent = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const store = new Store();
   const oneTapInitialized = useRef(false);
-  const codeVerifier = 'FGH767Gd65';
+  const codeVerifier = 'FGH767Gd65dsf76TgBh98vGbvDsF7GhEtr67GtRf';
 
   useEffect(() => {
     // Инициализация конфигурации VK ID SDK
@@ -33,7 +33,7 @@ const VKIDAuthComponent = () => {
     const code = urlParams.get('code');
     const deviceId = urlParams.get('device_id');
     const state = urlParams.get('state');
-
+  
     console.log('code:', code);
     console.log('deviceId:', deviceId);
     console.log('state:', state);
