@@ -4,14 +4,14 @@ import * as VKID from '@vkid/sdk';
 const VKIDAuthComponent = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const oneTapInitialized = useRef(false);
-  const codeVerifier = 'FGH767Gd65dsf76TgBh98vGbvDsF7GhEtr67ghjhuf'; // Должен быть одинаковым на клиенте и сервере
+  const codeVerifier = 'FGH767Gd65dsf76TgBh98vGbvDsF7GhEtr67ghjhufFGH767Gd65dsf76TgBh98vGbvDsF7GhEtr69ghjhuf';
 
   useEffect(() => {
     VKID.Config.init({
       app: '52336772',
       redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app/vkIdTest',
       scope: 'email phone',
-      codeVerifier: codeVerifier, // SDK создаст code_challenge
+      codeVerifier: codeVerifier,
       state: 'dj29fnsadjsd8а2',
     });
 
