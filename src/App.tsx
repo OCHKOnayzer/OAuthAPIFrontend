@@ -4,6 +4,8 @@ import Login from './components/page/login/Login';
 import Profile from './components/page/profile/Profile';
 import { StoreContext } from '.';
 import { observer } from "mobx-react-lite";
+import VkIdAuthTest from './components/page/login/VkIdAuthTest';
+
 function App() {
 
   const store = useContext(StoreContext);
@@ -26,7 +28,7 @@ function App() {
     return (
       <div className="App">
         <Routes>
-
+          <Route path='/vkIdTest' element={<VkIdAuthTest/>}/>
           <Route path="/" element={<Profile/>}/>
 
         </Routes>
