@@ -28,7 +28,7 @@ const VKIDAuthComponent = () => {
       oneTapInitialized.current = true;
     }
 
-    // Проверка кода авторизации и обработка ответа
+    // Проверка кода авторизации и обработка ответ
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     const deviceId = urlParams.get('device_id');
