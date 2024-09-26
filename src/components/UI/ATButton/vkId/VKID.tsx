@@ -4,7 +4,7 @@ import Store from '../../../store';
 
 const VKIDAuthComponent = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const store = new Store();
+  // const store = new Store();
   const oneTapInitialized = useRef(false);
   const codeVerifier = 'FGH767Gd65dsf76TgBh98vGbvDsF7GhEtr67GtRf';
 
@@ -38,22 +38,22 @@ const VKIDAuthComponent = () => {
     console.log('deviceId:', deviceId);
     console.log('state:', state);
 
-    if (code&&deviceId&&state) {
-      store.loginWithVkId(code,deviceId,state,handleError)
-        .then(() => {
-          console.log('Авторизация прошла успешно');
-        })
-        .catch((error: any) => {
-          console.error('Ошибка обработки авторизации', error);
-        });
-    } else {
-      console.error('Authorization code not found in URL.');
-    }
+    // if (code&&deviceId&&state) {
+    //   store.loginWithVkId(code,deviceId,state,handleError)
+    //     .then(() => {
+    //       console.log('Авторизация прошла успешно');
+    //     })
+    //     .catch((error: any) => {
+    //       console.error('Ошибка обработки авторизации', error);
+    //     });
+    // } else {
+    //   console.error('Authorization code not found in URL.');
+    // }
   }, []);
 
-  const handleError = (error: any) => {
-    console.error('Ошибка авторизации VK ID:', error);
-  };
+  // const handleError = (error: any) => {
+  //   console.error('Ошибка авторизации VK ID:', error);
+  // };
 
   return (
     <div>
