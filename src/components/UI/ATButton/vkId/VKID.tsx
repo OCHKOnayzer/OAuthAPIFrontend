@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import * as VKID from '@vkid/sdk';
 import Store from '../../../store';
 
@@ -23,8 +23,8 @@ const VKIDAuthComponent = () => {
     // Проверяем код авторизации в URL
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('device_id');
-    const deviceId = urlParams.get('device_id');
-
+    // const deviceId = urlParams.get('device_id');
+    // const state = urlParams.get('state');
 
     if (code) {
       console.log('Authorization code:', code);
