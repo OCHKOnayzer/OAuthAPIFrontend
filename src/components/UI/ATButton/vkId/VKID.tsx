@@ -12,7 +12,7 @@ const VKIDAuthComponent = () => {
       redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app/vkIdTest',
       scope: 'email phone',
       codeVerifier: codeVerifier, // SDK создаст code_challenge
-      state: 'dj29fnsadjsd82',
+      state: 'dj29fnsadjsd8а2',
     });
 
     if (!oneTapInitialized.current && containerRef.current) {
