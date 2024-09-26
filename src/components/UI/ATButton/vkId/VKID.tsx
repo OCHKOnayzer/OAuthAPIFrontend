@@ -13,8 +13,8 @@ const VKIDAuthComponent = () => {
   
 
   const refAuthVk = async () => {
-    const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGH767gd65dsf76TFggBh987G45';
-    const codeChallenge = '816Ao-Hjl77a3vb_3xMYMrkGzhLhmWRLhntTP-YM1cU';
+    const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGH767gd65dsf733FggBh987G45';
+    const codeChallenge = 'u153vA4fbiW3xcAb3deKR4vcMUHv0aFtXA00xz5NF8E';
 
     // Сохраняем codeVerifier для последующего обмена на токены
     localStorage.setItem('code_verifier', codeVerifier);
