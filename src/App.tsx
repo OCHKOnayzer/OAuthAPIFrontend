@@ -18,7 +18,7 @@ function App() {
     return (
       <div>
         <Routes>
-
+        <Route path='/VkIdAuthTest' element={<VkIdAuthTest/>}/>
         <Route path="/" element={<Login/>}/>
           
         </Routes>
@@ -28,7 +28,7 @@ function App() {
     return (
       <div className="App">
         <Routes>
-          <Route path='/vkIdTest' element={<VkIdAuthTest/>}/>
+        
           <Route path="/" element={<Profile/>}/>
 
         </Routes>

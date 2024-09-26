@@ -35,7 +35,7 @@ const VkIdAuthTest = () => {
 
 
   return (
-    <div>VkIdAuthTest</div>
+    <div>hello world</div>
   )
 }
 
