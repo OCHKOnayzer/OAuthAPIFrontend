@@ -22,14 +22,14 @@ const VKIDAuthComponent = () => {
 
     // Проверяем код авторизации в URL
     const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('device_id');
-    // const deviceId = urlParams.get('device_id');
-    // const state = urlParams.get('state');
+    const code = urlParams.get('code');
+    const deviceId = urlParams.get('device_id');
+    const state = urlParams.get('state');
 
-    if (code) {
+    if (code && deviceId && state) {
       console.log('Authorization code:', code);
 
-      store.loginWithVk(code, handleError)
+      store.loginWithVkId(code,deviceId,state,handleError)
       .then(() => {
         console.log('Авторизация прошла успешно');
         setTimeout(()=>{ 

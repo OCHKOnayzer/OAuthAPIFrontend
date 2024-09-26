@@ -131,7 +131,7 @@ export default class Store {
         }
     }
 
-    async loginWithVkId(token: string,deviceId:string,state:string): Promise<void> {
+    async loginWithVkId(token: string,deviceId:string,state:string, handleError: (error: any) => void): Promise<void> {
         try {
           // Предполагаем, что token - это код авторизации
 
@@ -146,7 +146,7 @@ export default class Store {
           localStorage.setItem('access_token', accessToken);
         } catch (e) {
           console.error('Ошибка при авторизации через VK ID:', e);
-          
+          handleError(e)
         }
       }
       
