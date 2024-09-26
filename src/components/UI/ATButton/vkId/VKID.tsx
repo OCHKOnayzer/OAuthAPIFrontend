@@ -22,16 +22,19 @@ const VKIDAuthComponent = () => {
 
     // Проверяем код авторизации в URL
     const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('device_id');
-    if (code) {
-      console.log('Authorization code:', code);
+    // const code = urlParams.get('code');
+    const deviceId = urlParams.get('device_id');
+    // const state = urlParams.get('state');
 
-      store.loginWithVkId(code,handleError)
+    if (deviceId) {
+      console.log('Authorization code:', deviceId);
+
+      store.loginWithVkId(deviceId,handleError)
       .then(() => {
         console.log('Авторизация прошла успешно');
-        // setTimeout(()=>{ 
-        //   window.location.href = '/'
-        // },100)   
+        setTimeout(()=>{ 
+          window.location.href = '/'
+        },100)   
       })
       .catch((error: any) => {
         console.error('Ошибка обработки авторизации', error);
