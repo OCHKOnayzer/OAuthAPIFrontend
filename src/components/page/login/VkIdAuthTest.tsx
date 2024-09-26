@@ -6,6 +6,8 @@ const VkIdAuthTest = () => {
 
     useEffect(()=>{ 
 
+        const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGH767gd65dsf76TFggBh98vGbv';
+
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
         const deviceId = urlParams.get('device_id');
@@ -16,7 +18,7 @@ const VkIdAuthTest = () => {
         console.log('state:', state);
 
         if (code&&deviceId&&state) {
-        store.loginWithVkId(code,deviceId,state,handleError)
+        store.loginWithVkId(code,deviceId,state,codeVerifier,handleError)
             .then(() => {
             console.log('Авторизация прошла успешно');
             })
