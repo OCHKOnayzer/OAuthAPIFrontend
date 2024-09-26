@@ -12,6 +12,8 @@ const VKIDAuthComponent = () => {
       app: '52336772',
       redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app',
       scope: 'email phone',
+      codeVerifier:'FGH767Gd65',
+      state: 'dj29fnsadjsd82',
     });
 
     if (!oneTapInitialized.current && containerRef.current) {
@@ -22,9 +24,13 @@ const VKIDAuthComponent = () => {
 
     // Проверяем код авторизации в URL
     const urlParams = new URLSearchParams(window.location.search);
-    // const code = urlParams.get('code');
+    const code = urlParams.get('code');
     const deviceId = urlParams.get('device_id');
-    // const state = urlParams.get('state');
+    const state = urlParams.get('state');
+
+    console.log("code:",code)
+    console.log("deviceId:",deviceId)
+    console.log("state:",state)
 
     if (deviceId) {
       console.log('Authorization code:', deviceId);
@@ -32,9 +38,6 @@ const VKIDAuthComponent = () => {
       store.loginWithVkId(deviceId,handleError)
       .then(() => {
         console.log('Авторизация прошла успешно');
-        setTimeout(()=>{ 
-          window.location.href = '/'
-        },100)   
       })
       .catch((error: any) => {
         console.error('Ошибка обработки авторизации', error);
