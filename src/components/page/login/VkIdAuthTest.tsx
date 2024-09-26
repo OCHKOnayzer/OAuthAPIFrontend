@@ -5,8 +5,8 @@ const VkIdAuthTest = () => {
     const store = new Store();
 
     useEffect(()=>{ 
-        const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGH767gd65dsf733FggBh987G45';
-        const codeChallenge = 'icgH8-mkuhuYFnqQMvD9SyLWwFsxjhWo0tBy3BU0jFs'; // Это заранее сгенерированное значение   
+        const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr64gFGFufFGH767gd65dsf733FggBh987G45';
+        // const codeChallenge = 'icgH8-mkuhuYFnqQMvD9SyLWwFsxjhWo0tBy3BU0jFs'; // Это заранее сгенерированное значение   
 
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');

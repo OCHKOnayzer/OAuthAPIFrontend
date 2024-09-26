@@ -7,14 +7,14 @@ const VKIDAuthComponent = () => {
   
   const VK_CLIENT_ID = '52336772';
   const VK_REDIRECT_URI = 'https://main--transcendent-frangipane-30b77b.netlify.app/vkIdTest';
-  const VK_SCOPE = "email";
+  const VK_SCOPE = "email phone";
 
   // Функция для генерации code_verifier
   
 
   const refAuthVk = async () => {
-    const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGH767gd65dsf733FggBh987G45';
-    const codeChallenge = 'u153vA4fbiW3xcAb3deKR4vcMUHv0aFtXA00xz5NF8E';
+    const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr64gFGFufFGH767gd65dsf733FggBh987G45';
+    const codeChallenge = 'TRtpPwxdhMQSerIRc00YLmHsyFUnXZmOzjUAX47dd88';
 
     // Сохраняем codeVerifier для последующего обмена на токены
     localStorage.setItem('code_verifier', codeVerifier);
