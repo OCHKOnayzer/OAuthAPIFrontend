@@ -21,7 +21,15 @@ const VkIdAuthTest = () => {
         store.loginWithVkId(code,deviceId,state,codeVerifier,handleError)
             .then(() => {
             console.log('Авторизация прошла успешно');
+
+            setTimeout(()=>{ 
+                window.location.href = '/'
+            },1000)
+
             })
+
+           
+
             .catch((error: any) => {
             console.error('Ошибка обработки авторизации', error);
             });
