@@ -5,8 +5,8 @@ const VkIdAuthTest = () => {
     const store = new Store();
 
     useEffect(()=>{ 
-
-        const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGHdsjhdjksbngBh78vGbv';
+        const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr67gFGFufFGH767gd65dsf76TFggBh98vGbv';
+        const codeChallenge = 'AXKbf0z9tG2lugDm9YKRmnmihXWuzOZAe3rLec3zVcI'; // Это заранее сгенерированное значение   
 
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
