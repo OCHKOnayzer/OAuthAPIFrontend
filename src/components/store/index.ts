@@ -134,7 +134,7 @@ export default class Store {
     async loginWithVkId(code:string,deviceId:string,state:string,handleError: (error: any) => void): Promise<void> {
         try {
 
-          const response = await AuthService.vkIdLogin(code,deviceId,state); // Добавьте codeVerifier
+          const response = await AuthService.vkIdLogin(code,deviceId,state);
           const { user, accessToken, provider } = response.data;
       
           console.log("provider", provider);
