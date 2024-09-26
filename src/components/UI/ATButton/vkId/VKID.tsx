@@ -23,10 +23,7 @@ const VKIDAuthComponent = () => {
     // Проверяем код авторизации в URL
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('device_id');
-    const deviceId = urlParams.get('device_id');
-    const state = urlParams.get('state');
-
-    if (code && deviceId && state) {
+    if (code) {
       console.log('Authorization code:', code);
 
       store.loginWithVkId(code,deviceId,state,handleError)

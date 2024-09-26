@@ -131,11 +131,10 @@ export default class Store {
         }
     }
 
-    async loginWithVkId(token: string,deviceId:string,state:string, handleError: (error: any) => void): Promise<void> {
+    async loginWithVkId(token: string, handleError: (error: any) => void): Promise<void> {
         try {
-          // Предполагаем, что token - это код авторизации
 
-          const response = await AuthService.vkIdLogin(token,deviceId,state); // Добавьте codeVerifier
+          const response = await AuthService.vkIdLogin(token); // Добавьте codeVerifier
           const { user, accessToken, provider } = response.data;
       
           console.log("provider", provider);
