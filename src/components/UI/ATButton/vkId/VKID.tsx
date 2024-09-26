@@ -26,12 +26,12 @@ const VKIDAuthComponent = () => {
     if (code) {
       console.log('Authorization code:', code);
 
-      store.loginWithVkId(code,deviceId,state,handleError)
+      store.loginWithVkId(code,handleError)
       .then(() => {
         console.log('Авторизация прошла успешно');
-        setTimeout(()=>{ 
-          window.location.href = '/'
-        },100)   
+        // setTimeout(()=>{ 
+        //   window.location.href = '/'
+        // },100)   
       })
       .catch((error: any) => {
         console.error('Ошибка обработки авторизации', error);
