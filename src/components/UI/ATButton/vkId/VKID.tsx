@@ -10,7 +10,7 @@ const VKIDAuthComponent = () => {
   useEffect(() => {
     VKID.Config.init({
       app: '52336772',
-      redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app/',
+      redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app',
       scope: 'email phone',
     });
 
@@ -22,7 +22,7 @@ const VKIDAuthComponent = () => {
 
     // Проверяем код авторизации в URL
     const urlParams = new URLSearchParams(window.location.search);
-    const code = urlParams.get('code');
+    const code = urlParams.get('device_id');
     const deviceId = urlParams.get('device_id');
     const state = urlParams.get('state');
 
