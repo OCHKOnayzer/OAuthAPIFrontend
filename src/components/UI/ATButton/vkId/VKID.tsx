@@ -6,13 +6,14 @@ const VKIDAuthComponent = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const store = new Store();
   const oneTapInitialized = useRef(false);
+  const codeVerifier = 'FGH767Gd65'
 
   useEffect(() => {
     VKID.Config.init({
       app: '52336772',
       redirectUrl: 'https://main--transcendent-frangipane-30b77b.netlify.app',
       scope: 'email phone',
-      codeVerifier:'FGH767Gd65',
+      codeVerifier:codeVerifier,
       state: 'dj29fnsadjsd82',
     });
 
