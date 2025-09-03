@@ -5,14 +5,10 @@ import Store from '../../../store';
 
 const ATOKbtn = () => {
 
-  const handleError = () => {
-    // Обработка ошибок
-  };
-
   const store = new Store();
 
   const refAuthOk = () => {
-    const OK_CLIENT_ID = '512002515808';
+    const OK_CLIENT_ID = '';
     const OK_REDIRECT_URI = 'http://localhost:3000';
     const OK_SCOPE = 'GET_EMAIL';
     const OK_LAYOUT = 'w';
