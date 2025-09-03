@@ -12,7 +12,7 @@ const ATYAbtn = () => {
 
   }
 
-  const clientId = 'c6de9c3e0c1341048fb7c790261852bd';
+  const clientId = '';
   const redirectUri = 'http://localhost:3000';
 
   const YandexOAuth = () => {
