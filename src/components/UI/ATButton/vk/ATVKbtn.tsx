@@ -11,9 +11,9 @@ const ATVKbtn = () => {
 
   }
 
-  const VK_CLIENT_ID = '52310644';
+  const VK_CLIENT_ID = '';
   
-  const VK_REDIRECT_URI = 'https://8d47-92-39-220-81.ngrok-free.app';
+  const VK_REDIRECT_URI = '';
 
   const VK_SCOPE = "email";
 
