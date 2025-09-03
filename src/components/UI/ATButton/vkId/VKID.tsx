@@ -5,18 +5,14 @@ import vkClasses from './style.module.css'
 const VKIDAuthComponent = () => {
   const store = new Store();
   
-  const VK_CLIENT_ID = '52336772';
-  const VK_REDIRECT_URI = 'https://main--transcendent-frangipane-30b77b.netlify.app/vkIdTest';
+  const VK_CLIENT_ID = '';
+  const VK_REDIRECT_URI = '';
   const VK_SCOPE = "email phone";
 
-  // Функция для генерации code_verifier
-  
-
   const refAuthVk = async () => {
-    const codeVerifier = 'FGH767Gd65dsf76TgBh98vGFFDsF7GfEtr64gFGFufFGH767gd65dsf733FggBh987G45';
-    const codeChallenge = 'TRtpPwxdhMQSerIRc00YLmHsyFUnXZmOzjUAX47dd88';
+    const codeVerifier = '';
+    const codeChallenge = '';
 
-    // Сохраняем codeVerifier для последующего обмена на токены
     localStorage.setItem('code_verifier', codeVerifier);
 
     const vkAuthUrl = `https://id.vk.com/authorize?response_type=code&client_id=${VK_CLIENT_ID}&scope=${VK_SCOPE}&redirect_uri=${VK_REDIRECT_URI}&state=XXXRandomZZZ&code_challenge=${codeChallenge}&code_challenge_method=S256`;
