@@ -10,8 +10,8 @@ const ATMLbtn = () => {
 
   const store = new Store();
 
-  const Mail_CLIENT_ID = '91bdcb05404e4dad9fdee6d080c7426c';
-  const Mail_REDIRECT_URI = 'http://localhost:3000';
+  const Mail_CLIENT_ID = '';
+  const Mail_REDIRECT_URI = '';
 
   const refAuthMailRu = () => {
     const mailAuthUrl = `https://oauth.mail.ru/login?client_id=${Mail_CLIENT_ID}&response_type=code&scope=userinfo,contacts&redirect_uri=${Mail_REDIRECT_URI}&state=some_state`;
